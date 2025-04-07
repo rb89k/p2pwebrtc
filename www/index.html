@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>P2P WebRTC</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no" />
+  <style>
+    html {
+      font-family: "Lucida Grande", Arial, sans-serif;
+      font-size: 1.125em;
+      line-height: 1.222em;
+    }
+    article {
+      margin: 0 auto;
+      max-width: 33em;
+    }
+    h1,h2 {
+      line-height: 1.2;
+    }
+    code {
+      display: inline-block;
+      background: #DDD;
+      padding: 0 0.306em;
+    }
+    b {
+      font-weight: normal;
+    }
+    .status {
+      padding: 1.222em;
+      border: 1px solid #4CAF50;
+      background: #C8E6C9;
+    }
+    .status.http {
+      border: 1px solid #FF9800;
+      background: #FFCC80;
+    }
+  </style>
+</head>
+<body>
+<body>
+<article>
+  <header id="header" role="banner">
+    <h1>P2P WebRTC</h1>
+  </header>
+</article>
+
+<script>
+  let message = `The application is currently serving at ${ window.location.href}`
+  const header = document.querySelector('#header');
+  const address = document.querySelector('#address');
+  const chat_url = window.location.href + 'basic-p2p/';
+  const status = document.createElement('p');
+  status.className = 'status'
+  if (window.location.protocol === 'http:') {
+    status.classList.add('http');
+    message += ` <b>However, you’re connected over HTTP.
+      Some WebRTC features may be unavailable.</b> See
+      the setup instructions to generate
+      and set up your self-signed SSL keys.`
+  }
+  address.innerHTML = `<a href="${ chat_url }">${ chat_url }</a>`;
+  status.innerHTML = message;
+  header.appendChild(status);
+</script>
+</body>
+</body>
+</html>

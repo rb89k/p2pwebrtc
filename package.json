@@ -1,0 +1,37 @@
+{
+  "name": "p2pwebrtc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "author": "",
+  "homepage": "",
+ 
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "PUBLIC=www DEBUG=signaling-server: node ./scripts/start-server",
+    "start:basic-p2p": "PUBLIC=basic-p2p DEBUG=signaling-server: node ./scripts/start-server",
+    "ssl-keys": "openssl req -x509 -out $npm_config_keydir/localhost.crt -keyout $npm_config_keydir/localhost.key -newkey rsa:2048 -nodes -sha256 -days $npm_config_numdays -subj '/CN=localhost' -extensions EXT -config scripts/conf/self-signed.conf",
+    "lint": "npm run lint:node && npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:css": "npx stylelint \"**/*.css\" --config=scripts/conf/.stylelintrc",
+    "lint:html": "npx htmllint --rc=scripts/conf/.htmllintrc \"basic-p2p/**/*.html\" \"www/**/*.html\"  \"deploy/**/*.html\"",
+    "lint:js": "npx eslint -c scripts/conf/.eslint.browser.json --ignore-pattern \"basic-p2p/tests/*.js\" \"basic-p2p/**/*.js\" \"www/**/*.js\" \"deploy/www/**/*.js\"",
+    "lint:node": "npx eslint -c scripts/conf/.eslint.node.json server.js scripts/start-server deploy/server.js deploy/scripts/start-server basic-p2p/tests",
+    "test:nw": "npx nightwatch -c scripts/conf/nightwatch.conf.js --fail-fast -e chromeActive,chromePassive --tag=$npm_config_tag",
+    "test:nwf": "npx nightwatch -c scripts/conf/nightwatch.conf.js -e chromeActive,firefoxPassive --tag=focus",
+    "test:nw:ff": "npx nightwatch -c scripts/conf/nightwatch.conf.js --fail-fast -e firefoxActive,firefoxPassive"
+  },
+  "dependencies": {
+    "express": "^4.18.3",
+    "http-errors": "^2.0",
+    "morgan": "^1.10",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "chromedriver": "^122.0.4",
+    "eslint": "^8.4.0",
+    "geckodriver": "^3.0",
+    "htmllint-cli": "^0.0.7",
+    "nightwatch": "^2.0",
+    "stylelint": "^16.2.1"
+  }
+}
