@@ -2,10 +2,10 @@
 
 Simple project exploring a lightweight signaling channel based on an offer-answer pattern. One peer sends an "offer" that describes its proposed parameters for the session, the other peer then responds with an "answer" that either agrees to the offer or proposes its own parameters. It's like two friends communicating with each other deciding where to meet (e.g. train station, the following would need to detail the time of arrival, departure, and which exit to meet at).
 
-- Inspiration for this project came from tinkering with the NVIDIA Jetson Nano (https://github.com/mpromonet/webrtc-streamer)
+- Inspiration for this project came from tinkering with the NVIDIA Jetson Nano (https://github.com/mpromonet/webrtc-streamer) and similar open-source projects.
 - Key Takeaways:
     * uses of SDP munging to force the use of specific codecs.
-    * response latency of video streaming
+    * response latency of video streaming/use cases webrtc-internals
 
 # Setup 
 
@@ -52,11 +52,14 @@ npm run start:basic-p2p
 
 <details>
     <summary>Socket.IO</summary> 
+   
+- Update description Socket.IO
+- Include description of signaling channel setup and event process
+- Connecting to the signaling channel
+- Description of signal callbacks ```registerScCallbacks()``` and placeholder functions for channel events
 
-- [] Update description Socket.IO
-- [] Include description of signaling channel setup and event process
-- [] Connecting to the signaling channel
-- [] Description of signal callbacks ```registerScCallbacks()``` and placeholder functions for channel events
+
+   
 </details>
 
 #### Namespace Utility
@@ -66,15 +69,16 @@ npm run start:basic-p2p
 
 ##### Flowchart Diagram
 
-![webrtc-signaling_channel_setup](https://github.com/user-attachments/assets/c787d0df-af10-44c9-b6bc-3be6b53df599)
+   ![webrtc-signaling_channel_setup](https://github.com/user-attachments/assets/c5dd22af-572e-4d25-8f03-ca168972feca)
 
 </details>
 
+
 ### Starting P2P Connection
 
-- [] User-media permissions
-- [] User-media functional setup
-- [] Window: self property, read only property returns the window itself. [^1]
+- User-media permissions
+- User-media functional setup
+- Window: self property, read only property returns the window itself. [^1]
 
 Basic media constraints for requesting access to the user's microphone and video. User must respond to the dialog box prompted by the browser to grant permissions.
 
@@ -86,12 +90,14 @@ mediaConstraints: { audio: false, video: true },
 [^1]: https://developer.mozilla.org/en-US/docs/Web/API/Window/self 
 
 
-
 <details>
     <summary>Functions and Callback</summary>
    
 ##### Sequence Diagram
 
-![register-callback-feature](https://github.com/user-attachments/assets/1c133086-39a5-4256-b36b-ec640dae97b7)
+   ![peer-to-peer](https://github.com/user-attachments/assets/abe3c762-8596-4caf-a89f-464bc61ff1f1)
 
 </details>
+
+
+
