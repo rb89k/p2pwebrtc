@@ -1,7 +1,5 @@
 # Overview
 
-Simple project exploring a lightweight signaling channel based on an offer-answer pattern. One peer sends an "offer" that describes its proposed parameters for the session, the other peer then responds with an "answer" that either agrees to the offer or proposes its own parameters. It's like two friends communicating with each other deciding where to meet (e.g. train station, the following would need to detail the time of arrival, departure, and which exit to meet at).
-
 - Inspiration for this project came from tinkering with the NVIDIA Jetson Nano (https://github.com/mpromonet/webrtc-streamer) and similar open-source projects.
 - Key Takeaways:
     * uses of SDP munging to force the use of specific codecs.
